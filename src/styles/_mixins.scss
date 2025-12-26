@@ -1,0 +1,112 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin multi-line-ellipsis($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin transition($properties: all, $duration: $transition-duration, $easing: ease) {
+  transition: $properties $duration $easing;
+}
+
+@mixin box-shadow($shadow: $shadow-md) {
+  box-shadow: $shadow;
+}
+
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+@mixin form-input {
+  padding: $spacing-md;
+  font-family: inherit;
+  font-size: $font-size-base;
+  color: $color-text-primary;
+  background-color: $color-background;
+  border: 2px solid $color-border;
+  border-radius: $border-radius;
+  @include transition(all, $transition-duration);
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+
+  &:disabled {
+    background-color: $color-disabled;
+    color: $color-text-secondary;
+    cursor: not-allowed;
+  }
+}
+
+@mixin grid-responsive($min-width: 300px) {
+  display: grid;
+  gap: $spacing-lg;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+}
+
+@mixin media-query($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (max-width: $breakpoint-sm - 1) {
+      @content;
+    }
+  } @else if $breakpoint == 'sm' {
+    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg - 1) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl - 1) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
