@@ -7,6 +7,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [vue()],
   build: {
+    base: './vue3-form-generator/',
     outDir: 'dist',
     rollupOptions: {
       output: {
