@@ -45,7 +45,7 @@
 
             <template #hint="slotProps">
               <slot :name="`field-${field.id}-hint`" v-bind="slotProps">
-                <p v-if="slotProps.hint && !slotProps.error" class="form-field__hint">
+                <p v-if="slotProps.hint && !('error' in slotProps)" class="form-field__hint">
                   {{ slotProps.hint }}
                 </p>
               </slot>

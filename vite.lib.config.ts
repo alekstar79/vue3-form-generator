@@ -2,20 +2,34 @@ import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
-export default defineConfig({
-  plugins: [vue()],
+import { fileURLToPath, URL } from 'node:url'
+import dts from 'vite-plugin-dts'
 
+export default defineConfig({
+  publicDir: false,
+  plugins: [
+    vue(),
+    dts({
+      include: ['src'],
+      outDir: 'lib',
+      insertTypesEntry: true,
+      exclude: '**/*.spec.ts'
+    })
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+    extensions: ['.ts', '.vue']
+  },
   build: {
     outDir: 'lib',
+    emptyOutDir: true,
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
       name: 'Vue3FormGenerator',
+      entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       formats: ['es', 'umd'],
-      fileName: (format) => {
-        if (format === 'es') return 'index.es.mjs'
-        if (format === 'umd') return 'index.umd.js'
-        return `vue3-form-generator.${format}.js`
-      }
+      fileName: (format) => `form.${format === 'es' ? 'es.js' : 'umd.cjs'}`,
     },
     rollupOptions: {
       external: ['vue', 'vue-router', 'pinia'],
@@ -26,34 +40,15 @@ export default defineConfig({
           'vue-router': 'VueRouter',
           pinia: 'Pinia'
         },
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.css')) {
-            return 'index.css'
-          }
-          return assetInfo.name || ''
-        }
       }
     },
-    copyPublicDir: false,
-    cssCodeSplit: true,
-    sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    }
-  },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src')
-    },
-    extensions: ['.ts', '.vue']
   },
   css: {
     preprocessorOptions: {
-      scss: {}
+      scss: {
+        silenceDeprecations: ['legacy-js-api'],
+        api: 'modern-compiler'
+      }
     }
   }
 })

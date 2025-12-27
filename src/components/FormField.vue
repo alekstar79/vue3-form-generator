@@ -11,7 +11,7 @@
     <input
       v-if="field.type === 'input'"
       :id="`field-${field.id}`"
-      :type="field.attributes?.type || 'text'"
+      :type="`${field.attributes?.type || 'text'}`"
       :value="modelValue"
       :input-rules="inputRules"
       :placeholder="field.placeholder"
@@ -43,7 +43,7 @@
       <option v-if="!field.required" value="">-- Выбрать --</option>
       <option
         v-for="option in field.options"
-        :key="option.value"
+        :key="`${option.value}`"
         :value="option.value"
         :disabled="option.disabled"
       >
@@ -55,7 +55,7 @@
     <textarea
       v-else-if="field.type === 'textarea'"
       :id="`field-${field.id}`"
-      :value="modelValue"
+      :value="`${modelValue}`"
       :placeholder="field.placeholder"
       :required="field.required"
       :maxlength="field.maxLength"
@@ -110,7 +110,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { FormField } from '@/types'
-import { isValidEmail, isValidPhone } from '@/utils/formValidation'
 
 interface Props {
   field: FormField;

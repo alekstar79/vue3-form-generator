@@ -37,11 +37,10 @@ export function useValidation() {
    * Валидирует всю форму
    */
   const validateForm = <
-    K extends FormField,
-    V extends FormValues,
-    E extends FormErrors
-  >(fields: K[], values: V): E => {
-    const errors: E = {}
+    K extends FormField = FormField,
+    V extends FormValues = FormValues,
+  >(fields: K[], values: V): FormErrors => {
+    const errors = {} as FormErrors
 
     for (const field of fields) {
       const value = values[field.id]
@@ -59,10 +58,9 @@ export function useValidation() {
    * Очистка формы
    */
   const getInitialFormValues = <
-    K extends FormField,
-    V extends FormValues
-  >(fields: K[]): V => {
-    const values: V = {}
+    K extends FormField = FormField,
+  >(fields: K[]): FormValues => {
+    const values = {} as FormValues
 
     for (const field of fields) {
       if (field.defaultValue !== undefined) {

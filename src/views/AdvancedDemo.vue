@@ -107,13 +107,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, useTemplateRef, watch } from 'vue'
+import { ref } from 'vue'
 
-import { useConditional } from '@/composable/useConditional'
+import type { FormConfig, FormValues } from '@/types'
 import { useFormStore } from '@/store/useFormStore'
-
-import type { FormConfig, FormErrors, FormValues } from '@/types'
-import { FormField, FormGenerator } from '@/components'
+import { FormGenerator } from '@/components'
 
 
 const formStore = useFormStore()
@@ -230,7 +228,6 @@ const conditionalFormConfig: FormConfig = {
 const conditionalId = { id: 'userType' }
 const conditionalFormValues = ref<FormValues>({})
 const conditionalResult = ref<FormValues | null>(null)
-const conditionalErrors = ref<FormErrors>({})
 
 const handleConditionalSubmit = (values: FormValues): void => {
   conditionalResult.value = values
@@ -268,7 +265,7 @@ const storeFormValues = ref<FormValues>({})
 const showHistory = ref(false)
 
 const handleStoreSubmit = (values: FormValues) => {
-  formStore.submitForm(storeFormConfig.id, values)
+  formStore.submitForm(storeFormConfig.id /*, values */)
   console.log('✅ Сохранено в хранилище:', values)
 }
 

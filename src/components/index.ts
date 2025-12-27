@@ -1,9 +1,17 @@
-import { defineAsyncComponent } from 'vue'
+import FormField from './FormField.vue'
+import FormGenerator from './FormGenerator.vue'
 
-export const FormField = defineAsyncComponent(() =>
-  import('./FormField.vue')
-)
+// import { defineAsyncComponent } from 'vue'
 
-export const FormGenerator = defineAsyncComponent(() =>
-  import('./FormGenerator.vue')
-)
+// export const FormField = defineAsyncComponent(() =>
+//   import('./FormField.vue')
+// )
+
+// export const FormGenerator = defineAsyncComponent(() =>
+//   import('./FormGenerator.vue')
+// )
+
+export {
+  FormGenerator,
+  FormField
+}

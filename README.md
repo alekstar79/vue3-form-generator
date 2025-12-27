@@ -1,5 +1,13 @@
 # Vue 3 Form Generator
 
+[![Vue](https://img.shields.io/badge/Vue-3.4+-green.svg)]()
+[![NPM](https://img.shields.io/npm/v/@alekstar79/vue3-form-generator.svg)](https://www.npmjs.com/package/@alekstar79/vue3-form-generator)
+[![GitHub repo](https://img.shields.io/badge/github-repo-green.svg?style=flat)](https://github.com/alekstar79/vue3-form-generator)
+[![Typescript](https://img.shields.io/badge/TypeScript-Ready-blue?logo=typescript)]()
+[![License](https://img.shields.io/badge/License-MIT-green)]()
+[![Version](https://img.shields.io/badge/Version-3.0.0-orange)]()
+[![Coverage](https://img.shields.io/badge/Coverage-79.6%25-green)]()
+
 Гибкий генератор форм для Vue 3 с поддержкой TypeScript, валидацией, состоянием и кастомизацией.
 
 ![review](banner.svg)

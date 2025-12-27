@@ -1,16 +1,21 @@
-import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 
-import vue from '@vitejs/plugin-vue'
-import { defineConfig } from 'vite'
-
 export default defineConfig({
-  base: './',
+  base: '/vue3-form-generator/',
   plugins: [vue()],
   build: {
-    outDir: 'dist',
+    outDir: 'gh-pages',
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        chunkFileNames: '[name].js',
+        entryFileNames: '[name].js',
+        assetFileNames: '[name].[ext]'
+      }
+    }
   },
   resolve: {
     alias: {
@@ -25,9 +30,5 @@ export default defineConfig({
         api: 'modern-compiler',
       },
     },
-  },
-  server: {
-    port: 3000,
-    open: true
   }
 })

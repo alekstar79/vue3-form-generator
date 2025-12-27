@@ -7,7 +7,6 @@
 
     <div class="demo-content">
       <FormGenerator
-        ref="formRef"
         :config="basicFormConfig"
         :model-value="formValues"
         @update:model-value="formValues = $event"
@@ -28,7 +27,6 @@ import { ref } from 'vue'
 import type { FormConfig, FormValues } from '@/types'
 import {  FormGenerator } from '@/components'
 
-const formRef = ref()
 const formValues = ref<FormValues>({})
 const lastSubmission = ref<FormValues | null>(null)
 

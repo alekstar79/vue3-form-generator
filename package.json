@@ -15,6 +15,9 @@
     "vue-forms",
     "pinia"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/alekstar79/vue3-form-generator"
@@ -42,6 +45,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run build:demo && npm run build:lib",
+    "build:github": "vite build -c vite.github.config.ts",
     "build:lib": "vite build -c vite.lib.config.ts",
     "build:demo": "vite build",
     "preview": "vite preview",
@@ -59,6 +63,7 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "@types/node": "^25.0.3",
     "@vitejs/plugin-vue": "^4.3.4",
     "@vitest/coverage-istanbul": "4.0.16",
     "@vitest/ui": "^0.34.6",
@@ -66,10 +71,12 @@
     "eslint": "^8.45.0",
     "jsdom": "^27.3.0",
     "pinia": "^2.1.6",
-    "sass": "^1.66.1",
+    "sass": "^1.97.1",
+    "sass-embedded": "^1.97.1",
     "terser": "^5.44.1",
     "typescript": "^5.9.3",
     "vite": "^4.4.9",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.16",
     "vue": "^3.5.26",
     "vue-router": "^4.2.4",
