@@ -1,6 +1,6 @@
 {
   "name": "@alekstar79/vue3-form-generator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "private": false,
   "description": "Генератор форм для Vue 3 с поддержкой TypeScript, валидации и кастомизации",
@@ -37,7 +37,7 @@
     "./dist/style.css": "./lib/style.css"
   },
   "files": [
-    "dist",
+    "lib",
     "src",
     "README.md",
     "LICENSE"

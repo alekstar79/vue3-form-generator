@@ -29,7 +29,7 @@ export default defineConfig({
       name: 'Vue3FormGenerator',
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       formats: ['es', 'umd'],
-      fileName: (format) => `form.${format === 'es' ? 'es.js' : 'umd.cjs'}`,
+      fileName: (format) => `index.${format === 'es' ? 'es.js' : 'umd.cjs'}`,
     },
     rollupOptions: {
       external: ['vue', 'vue-router', 'pinia'],

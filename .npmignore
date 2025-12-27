@@ -5,8 +5,8 @@ coverage
 *.log
 .github
 .git
+gh-pages
 dist
-lib
 *.config.*
 *.lock
 *.md
