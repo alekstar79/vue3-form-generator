@@ -32,12 +32,11 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'es.js' : 'umd.cjs'}`,
     },
     rollupOptions: {
-      external: ['vue', 'vue-router', 'pinia'],
+      external: ['vue', 'pinia'],
       output: {
         exports: 'named',
         globals: {
           vue: 'Vue',
-          'vue-router': 'VueRouter',
           pinia: 'Pinia'
         },
       }

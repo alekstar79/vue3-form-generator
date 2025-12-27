@@ -1,6 +1,6 @@
 {
   "name": "@alekstar79/vue3-form-generator",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "private": false,
   "description": "Генератор форм для Vue 3 с поддержкой TypeScript, валидации и кастомизации",
@@ -37,7 +37,6 @@
     "./dist/style.css": "./lib/style.css"
   },
   "files": [
-    "lib",
     "src",
     "README.md",
     "LICENSE"
@@ -59,8 +58,7 @@
   },
   "peerDependencies": {
     "pinia": "^2.1.6",
-    "vue": "^3.5.26",
-    "vue-router": "^4.2.4"
+    "vue": "^3.5.26"
   },
   "devDependencies": {
     "@types/node": "^25.0.3",
