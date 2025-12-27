@@ -50,7 +50,7 @@ The demo showcases real-time calendar interactions with locale switching, date s
 ✅ **Производительность** - code splitting, lazy loading, оптимизированный рендеринг  
 ✅ **Доступность** - правильная семантика HTML, ARIA атрибуты  
 ✅ **Тестирование** - unit тесты с Vitest  
-✅ **Мобильная оптимизация** - responsive дизайн, touch-friendly интерфейс  
+✅ **Мобильная оптимизация** - responsive дизайн, touch-friendly интерфейс
 
 ## 📦 Установка
 
@@ -87,43 +87,43 @@ yarn test
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import FormGenerator from '@/components/FormGenerator.vue'
-import type { FormConfig, FormValues } from '@/types'
+  import { ref } from 'vue'
+  import FormGenerator from '@/components/FormGenerator.vue'
+  import type { FormConfig, FormValues } from '@/types'
 
-const formConfig: FormConfig = {
-  id: 'contact-form',
-  title: 'Контактная форма',
-  fields: [
-    {
-      id: 'name',
-      type: 'input',
-      label: 'Имя',
-      required: true,
-      minLength: 2
-    },
-    {
-      id: 'email',
-      type: 'input',
-      label: 'Email',
-      required: true,
-      pattern: '^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$',
-      attributes: { type: 'email' }
-    },
-    {
-      id: 'message',
-      type: 'textarea',
-      label: 'Сообщение',
-      required: true
-    }
-  ]
-}
+  const formConfig: FormConfig = {
+    id: 'contact-form',
+    title: 'Контактная форма',
+    fields: [
+      {
+        id: 'name',
+        type: 'input',
+        label: 'Имя',
+        required: true,
+        minLength: 2
+      },
+      {
+        id: 'email',
+        type: 'input',
+        label: 'Email',
+        required: true,
+        pattern: '^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$',
+        attributes: { type: 'email' }
+      },
+      {
+        id: 'message',
+        type: 'textarea',
+        label: 'Сообщение',
+        required: true
+      }
+    ]
+  }
 
-const formValues = ref<FormValues>({})
+  const formValues = ref<FormValues>({})
 
-const handleSubmit = (values: FormValues) => {
-  console.log('Форма отправлена:', values)
-}
+  const handleSubmit = (values: FormValues) => {
+    console.log('Форма отправлена:', values)
+  }
 </script>
 ```
 

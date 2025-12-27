@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+
 import { resolve } from 'path'
 
 export default defineConfig({
@@ -11,9 +12,25 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        chunkFileNames: 'assets/[name].js',
-        entryFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]'
+        exports: 'named',
+        entryFileNames: '[name].js',
+        assetFileNames: 'assets/[name].[ext]',
+        manualChunks: {
+          'vendor/vue': ['vue'],
+          'vendor/vue-router': ['vue-router'],
+          'vendor/pinia': ['pinia'],
+        },
+        chunkFileNames({ name }) {
+          if (name.includes('vendor')) {
+            return `${name}.js`
+          }
+
+          if (name.includes('_plugin-vue')) {
+            return 'vue-plugin.js'
+          }
+
+          return '[name].js'
+        }
       }
     }
   },
